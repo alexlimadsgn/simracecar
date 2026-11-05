@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no" />
+  <meta name="theme-color" content="#12222e" />
+  <link rel="apple-touch-icon" href="./icon-192.png" />
+  <title>Sim Race Car</title>
+</head>
+<body>
+  <canvas id="view"></canvas>
+  <div id="start">
+    <h1>Garagem</h1>
+    <canvas id="preview" aria-label="Pré-visualização do carro"></canvas>
+    <aside id="panel" aria-label="Personalização do carro"></aside>
+    <button id="play" aria-label="Jogar">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" /></svg>
+    </button>
+    <div id="rooms">
+      <input id="roomName" maxlength="14" placeholder="Seu nome" aria-label="Seu nome" autocomplete="off">
+      <div class="roomRow">
+        <label>Pistas <input id="roomTracks" type="number" min="1" value="3"></label>
+        <button id="roomCreate" type="button">Criar sala</button>
+      </div>
+      <div class="roomRow">
+        <input id="roomCode" maxlength="4" placeholder="CÓDIGO" aria-label="Código da sala" autocomplete="off" autocapitalize="characters">
+        <button id="roomJoin" type="button">Entrar</button>
+      </div>
+      <p id="roomError" role="alert"></p>
+    </div>
+    <p id="status" role="status"></p>
+  </div>
+  <div id="hud" hidden>
+    <div id="speed"><b id="kmh">0</b><span>km/h</span></div>
+    <div id="gear">1</div>
+    <div id="rpm"><i id="rpmfill"></i></div>
+    <div id="place"></div>
+    <div id="race"><b id="rPos"></b><span id="rLap"></span><span id="rTime"></span><span id="rBest"></span></div>
+    <div id="wrong" hidden>Contramão</div>
+    <div id="banner" hidden></div>
+    <canvas id="minimap" aria-label="Traçado da pista"></canvas>
+    <div id="help">WASD / setas: dirigir · Espaço: freio de mão · R: voltar à pista · C: câmera · N: som · P: pausa</div>
+  </div>
+  <button id="pause" type="button" aria-label="Pausar" hidden>❚❚</button>
+  <div id="finish" role="dialog" aria-label="Fim da corrida" hidden>
+    <h2 id="finishTitle"></h2>
+    <p id="finishInfo"></p>
+    <button id="nextBtn" type="button">Nova pista</button>
+    <button id="againBtn" type="button">Correr de novo</button>
+    <button id="finishGarage" type="button">Garagem</button>
+  </div>
+  <div id="lobby" role="dialog" aria-label="Sala de espera" hidden>
+    <p>Código da sala</p>
+    <h2 id="lobbyCode"></h2>
+    <p id="lobbyInfo"></p>
+    <ol id="lobbyPlayers"></ol>
+    <button id="lobbyStart" type="button">Iniciar campeonato</button>
+    <p id="lobbyWait">Aguardando o anfitrião iniciar…</p>
+    <button id="lobbyLeave" type="button">Sair da sala</button>
+  </div>
+  <div id="standings" role="dialog" aria-label="Classificação" hidden>
+    <h2 id="standingsTitle"></h2>
+    <table>
+      <thead><tr><th>Pos.</th><th>Piloto</th><th id="standingsTime">Tempo</th><th>Corrida</th><th>Total</th></tr></thead>
+      <tbody id="standingsRows"></tbody>
+    </table>
+    <p id="standingsNext"></p>
+    <button id="standingsGarage" type="button">Voltar à garagem</button>
+  </div>
+  <div id="menu" role="dialog" aria-label="Pausa" hidden>
+    <h2>Pausa</h2>
+    <button id="resume" type="button">Continuar</button>
+    <button id="restart" type="button">Reiniciar corrida</button>
+    <button id="newTrack" type="button">Nova pista</button>
+    <button id="toGarage" type="button">Voltar à garagem</button>
+    <div id="settings">
+      <label>Volume <output id="volumeOut"></output><input id="volume" type="range" min="0" max="100" step="5"></label>
+      <label>Neblina <output id="fogOut"></output><input id="fog" type="range" min="0" max="100" step="5"></label>
+      <button id="resetSettings" type="button">Restaurar padrão</button>
+    </div>
+  </div>
+  <div id="touch" hidden>
+    <div class="side">
+      <button data-k="left" aria-label="Esquerda">◀</button>
+      <button data-k="right" aria-label="Direita">▶</button>
+    </div>
+    <div class="side">
+      <button data-k="reset" class="small" aria-label="Voltar à pista">↺</button>
+      <button data-k="brake" aria-label="Freio">■</button>
+      <button data-k="gas" aria-label="Acelerar">▲</button>
+    </div>
+  </div>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>
