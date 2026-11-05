@@ -16,6 +16,14 @@ export function bindLobby(garage: Garage, begin: (room: RoomLink) => void) {
   const nameIn = $<HTMLInputElement>('roomName'), codeIn = $<HTMLInputElement>('roomCode'), tracksIn = $<HTMLInputElement>('roomTracks');
   const error = $('roomError'), lobby = $('lobby');
   tracksIn.max = String(MAX_TRACKS);
+  const rooms = $('rooms'), lan = $('lan');
+  const toggle = (open: boolean) => {
+    rooms.hidden = !open;
+    lan.setAttribute('aria-expanded', String(open));
+    (open ? nameIn : lan).focus();
+  };
+  lan.onclick = () => toggle(rooms.hidden === true);
+  $('roomClose').onclick = () => toggle(false);
   try { nameIn.value = localStorage.getItem(NAME_KEY) ?? ''; } catch { /* armazenamento indisponível */ }
   codeIn.oninput = () => { codeIn.value = codeIn.value.toUpperCase().replace(/[^A-Z0-9]/g, ''); };
 

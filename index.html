@@ -16,7 +16,11 @@
     <button id="play" aria-label="Jogar">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" /></svg>
     </button>
-    <div id="rooms">
+    <button id="lan" type="button" aria-label="Partida online" title="Partida online" aria-expanded="false" aria-controls="rooms">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 2h6v6h-2v3h7v5h2v6h-6v-6h2v-3h-5v3h2v6H9v-6h2v-3H6v3h2v6H2v-6h2v-5h7V8H9z" /></svg>
+    </button>
+    <div id="rooms" role="dialog" aria-label="Partida online" hidden>
+      <div class="roomHead"><h2>Partida online</h2><button id="roomClose" type="button" aria-label="Fechar">✕</button></div>
       <input id="roomName" maxlength="14" placeholder="Seu nome" aria-label="Seu nome" autocomplete="off">
       <div class="roomRow">
         <label>Pistas <input id="roomTracks" type="number" min="1" value="3"></label>

@@ -86,7 +86,16 @@ html, body { margin: 0; height: 100%; overflow: hidden; background: #12222e; col
 #finish button:hover { background: #ffffff28; }
 #finish #nextBtn { background: #ff2a68; border-color: #ff2a68; }
 @media (pointer: coarse) { #race { font-size: 12px; gap: 8px; padding: 4px 10px; } #race b { font-size: 18px; } #place { top: 46px; } }
-#rooms { grid-column: 1; grid-row: 5; justify-self: center; width: min(420px, 100%); display: flex; flex-direction: column; gap: 6px; }
+#lan { grid-column: 1; grid-row: 3; justify-self: center; align-self: center; margin-left: 172px; width: 60px; height: 60px; padding: 0; border: 0; border-radius: 50%; background: #2a6a8a; color: #fff; cursor: pointer; box-shadow: 0 7px 0 #17435a; transition: transform .1s, box-shadow .1s; }
+#lan:hover { transform: translateY(-2px); box-shadow: 0 9px 0 #17435a; }
+#lan:active { transform: translateY(5px); box-shadow: 0 2px 0 #17435a; }
+#lan:focus-visible { outline: 3px solid #fff; outline-offset: 4px; }
+#lan svg { width: 32px; height: 32px; fill: currentColor; display: block; margin: auto; }
+#rooms[hidden] { display: none; }
+#rooms { position: fixed; z-index: 4; left: 50%; top: 50%; transform: translate(-50%, -50%); width: min(420px, calc(100vw - 32px)); max-height: calc(100dvh - 32px); overflow-y: auto; display: flex; flex-direction: column; gap: 8px; padding: 16px; border-radius: 14px; background: #0b1820f5; box-shadow: 0 12px 40px #000a; touch-action: auto; }
+#rooms .roomHead { display: flex; justify-content: space-between; align-items: center; }
+#rooms h2 { margin: 0; font-size: 18px; }
+#rooms #roomClose { width: 38px; }
 #rooms input { min-height: 38px; min-width: 0; padding: 0 10px; border-radius: 9px; border: 1px solid #ffffff40; background: #ffffff12; color: #fff; font: inherit; font-size: 14px; user-select: text; }
 #rooms input::placeholder { color: #ffffffa0; }
 #rooms .roomRow { display: flex; gap: 6px; align-items: center; }
